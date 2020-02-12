@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700&display=swap');
+
+$mdc-typography-font-family: unquote("Roboto Mono, monospace");
+$mdc-theme-primary: #64FFDA;
+$mdc-theme-background: #121212;
+$mdc-theme-surface: #151515;
+
+$mdc-theme-on-surface: hsl(0, 0%, 80%);
+@import "~@material/button/mdc-button";
+@import "~@material/textfield/mdc-text-field";
+@import "~@material/card/mdc-card";
+@import "~@material/theme/mdc-theme";
+@import "~@material/elevation/mdc-elevation";
+@import "~@material/typography/mdc-typography";
+
+body {
+  padding: 0;
+  margin: 0;
+  background: $mdc-theme-background;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, pre {
+  @extend .mdc-typography;
+  @extend .mdc-theme--on-surface;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white !important;
+}
+
+p {
+  @extend .mdc-typography--body1;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: $mdc-theme-primary !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  @extend .mdc-elevation--z5;
+  padding: 8px;
+}
+
+$splash_bg_size: 500px;
+#splash {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+#headline {
+  position: absolute;
+  bottom: 16px;
+  right: 32px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.headline_item {
+  color: white;
+}
+
+#splash_bg {
+  height: $splash_bg_size;
+  background-size: cover;
+  background: url("../images/realtime_lighting.png") center;
+  z-index: -1;
+}
+
+.social-button {
+  color: white !important;
+}
+
+.card-title {
+  margin-top: 0;
+}
+
+.content-card {
+  @extend .mdc-card;
+  @extend .mdc-elevation--z5;
+  height: fit-content;
+  padding: 32px;
+  margin: 32px 0;
+}
+
+
+#header-content {
+  height: 100%;
+  margin: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#header-bar {
+  display: flex;
+}
+
+.header-item {
+  margin: 0 32px;
+}
+
+#website-content {
+  width: 60%;
+  margin: 0 auto;
+}
+
+#introduction {
+  display: flex;
+}
+
+
+#welcome {
+  font-size: 32pt;
+}
+
+#blog {
+  display: block;
+}
+
+#about-me {
+  flex-grow: 1;
+}
+
+#greeter {
+  //width: 6 * 120px;
+  margin-right: 32px;
+}
+
+#portfolio {
+  @extend .content-card;
+}
+
+#portfolio-gallery {
+  display: grid;
+  grid-gap: 16px;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+
+
+}
+
+#contact {
+  @extend .content-card;
+}
+
+.project {
+  width: 300px;
+}
+
+.project-content {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.project-primary {
+  padding-bottom: 1rem;
+}
+
+.invert-color {
+  color: white;
+}
+
+
+@media only screen and (max-width: 1080px) {
+  #website-content {
+    width: 90%;
+  }
+  #introduction {
+    display: block;
+  }
+  #greeter {
+    margin-right: 0;
+  }
+}
