@@ -1,6 +1,6 @@
 import {MDCRipple} from '@material/ripple';
 
-document.querySelectorAll('.mdc-button').forEach(function (el) {
+document.querySelectorAll('.mdc-button').forEach(el => {
     new MDCRipple(el);
 });
 

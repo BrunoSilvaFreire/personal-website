@@ -41,6 +41,7 @@
   "dependencies": {
     "@ianwalter/debug-loader": "^1.1.0",
     "debug-loader": "0.0.1",
+    "marked": "^0.8.0",
     "pug-runtime": "^2.0.5"
   }
 }

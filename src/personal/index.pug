@@ -1,10 +1,4 @@
-doctype html
-
-mixin header-item(label, destination)
-    a(href=destination)
-        button.mdc-button.header-item
-            .mdc-button__ripple
-            span.mdc-button__label=label
+extends base
 
 mixin social(icon, url)
     a(href=url target="_blank")
@@ -30,105 +24,98 @@ mixin project(title, subtitle, url, thumbnail, description, backgroundMode)
                             .mdc-button__ripple
                             span.mdc-button__label View
 
-html
-    head
-        title Bruno "DDevil" Silva Freire
-        link(rel="stylesheet" type="text/css" href=require("./scss/main.scss"))
-        link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
-        script(src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js")
-
-    body
-        header
-            #header-content
-                h1.mdc-typography--headline5 Bruno Ribeiro Braga Silva Freire
-                #header-bar
-                    button(disabled=true).header-item.mdc-button.header_item#blog
-                        .mdc-button__ripple
-                        span.mdc-button__label Blog
-                    +header-item("Contact", "#socials")
-                    +header-item("Portfolio", "#portfolio")
-        #splash
-            #splash_bg
-                #headline
-                    h1.mdc-typography--overline  Realtime dynamic lighting on <i>The Unnecessary Engine</i>
-        #website-content
-            article#introduction
-                #greeter.content-card
-                    p.mdc-typography--overline "The best way to learn, is through teaching"
-                    h1.card-title.mdc-typography--headline4 Welcome!
-                    p I'm Bruno and you've reached my website!
-                    p I'm a 22 y/o computer science student in Curitiba, Brazil
-                    p I also love Kotlin, C++, Gradle, Unity3D and Computer Graphics as much as I love coffee.
-                        | Which means a lot
-                    p Enjoyed something I created? !{' '}
-                        a(href="https://buymeacoff.ee/BrunoSilvaFreire" target="_blank") Consider buying me a coffee
-                        | !
-                    .mdc-card__actions
-                        .mdc-card__action-buttons
-                            a(href="#portfolio")
-                                button.mdc-button.mdc-card__action--button
-                                    .mdc-button__ripple
-                                    span.mdc-button__label Showreel
-                        .mdc-card__action-icons#socials
-                            +social("mdi-twitter", "https://twitter.com/brunorbsf")
-                            +social("mdi-linkedin", "https://www.linkedin.com/in/bruno-ribeiro-braga-silva-freire-0b1460159/")
-                            +social("mdi-github-circle", "https://github.com/BrunoSilvaFreire/")
-                            +social("mdi-instagram", "https://www.instagram.com/brunorbsf/")
-                            +social("mdi-discord", "https://discord.gg/gDXCzTS")
-                            +social("mdi-reddit", "https://www.reddit.com/user/DDevil_")
+block content
+    -
+        console.log("Hello")
+        articles = htmlWebpackPlugin.articles
+        console.log("Articles @ " + articles)
+    if (articles != null)
+        each article in articles
+            h1=article.author
+    else
+        h1.mdc-typography--headline6 no articles
+    #splash
+        #splash_bg
+            #headline
+                h1.mdc-typography--overline  Realtime dynamic lighting on <i>The Unnecessary Engine</i>
+    #website-content
+        article#introduction
+            #greeter.content-card
+                p.mdc-typography--overline "The best way to learn, is through teaching"
+                h1.card-title.mdc-typography--headline4 Welcome!
+                p I'm Bruno and you've reached my website!
+                p I'm a 22 y/o computer science student in Curitiba, Brazil
+                p I also love Kotlin, C++, Gradle, Unity3D and Computer Graphics as much as I love coffee.
+                    | Which means a lot
+                p Enjoyed something I created? !{' '}
+                    a(href="https://buymeacoff.ee/BrunoSilvaFreire" target="_blank") Consider buying me a coffee
+                    | !
+                .mdc-card__actions
+                    .mdc-card__action-buttons
+                        a(href="#portfolio")
+                            button.mdc-button.mdc-card__action--button
+                                .mdc-button__ripple
+                                span.mdc-button__label Showreel
+                    .mdc-card__action-icons#socials
+                        +social("mdi-twitter", "https://twitter.com/brunorbsf")
+                        +social("mdi-linkedin", "https://www.linkedin.com/in/bruno-ribeiro-braga-silva-freire-0b1460159/")
+                        +social("mdi-github-circle", "https://github.com/BrunoSilvaFreire/")
+                        +social("mdi-instagram", "https://www.instagram.com/brunorbsf/")
+                        +social("mdi-discord", "https://discord.gg/gDXCzTS")
+                        +social("mdi-reddit", "https://www.reddit.com/user/DDevil_")
 
 
 
-                #about-me.content-card
-                    h1.mdc-typography--headline5 What do you mostly work on?
-                    p I am really passionate about computer graphics and real time simulations!
-                    h1.mdc-typography--headline5 Best kind of coffee?
-                    p All coffee deserves love!
-                    h1.mdc-typography--headline5 What's the best programming language?
-                    p The one that best fits the project.
-                    h1.mdc-typography--headline5 Favourite programming language?
-                    p C++ for performance, Dart for UI, Kotlin for everything else.
-            #portfolio
-                h1.mdc-typography--headline4 Portfolio
-                #portfolio-gallery
-                    +project(
-                        "The Unnecessary Engine",
-                        "An engine created for study purposes",
-                        "https://github.com/BrunoSilvaFreire/TheUnnecessaryEngine",
-                        "https://github.com/BrunoSilvaFreire/TheUnnecessaryEngine/raw/master/media/splashart.png",
-                        null
-                    )
-                        p With a focus on Data Oriented Design, this engine uses ECS and !{' '}
-                            a(href="https://flutter.dev/" target="_blank") Flutter !{' '}
-                            | for it's editor"
-                    +project(
-                        "Tsuki Suite",
-                        "Unity library suite with many ready-to-use systems",
-                        "https://github.com/LunariStudios/TsukiSuite",
-                        "https://github.com/LunariStudios/TsukiSuite/blob/master/Tsuki-Assets/1x/TsukiLogo_White_Original.png?raw=true",
-                        "TsukiSuite is an open source, free for commercial use group of libraries created for making Unity Development more pleasant.",
-                        "contain"
-                    )
-                    +project(
-                        "Elo App",
-                        "App based on Flutter",
-                        "",
-                        require("./images/eloapp.png"),
-                        "App developed as the mobile counterpart to EloHell's workshop"
-                    )
+            #about-me.content-card
+                h1.mdc-typography--headline5 What do you mostly work on?
+                p I am really passionate about computer graphics and real time simulations!
+                h1.mdc-typography--headline5 Best kind of coffee?
+                p All coffee deserves love!
+                h1.mdc-typography--headline5 What's the best programming language?
+                p The one that best fits the project.
+                h1.mdc-typography--headline5 Favourite programming language?
+                p C++ for performance, Dart for UI, Kotlin for everything else.
+        #portfolio
+            h1.mdc-typography--headline4 Portfolio
+            #portfolio-gallery
+                +project(
+                    "The Unnecessary Engine",
+                    "An engine created for study purposes",
+                    "https://github.com/BrunoSilvaFreire/TheUnnecessaryEngine",
+                    "https://github.com/BrunoSilvaFreire/TheUnnecessaryEngine/raw/master/media/splashart.png",
+                    null
+                )
+                    p With a focus on Data Oriented Design, this engine uses ECS and !{' '}
+                        a(href="https://flutter.dev/" target="_blank") Flutter !{' '}
+                        | for it's editor"
+                +project(
+                    "Tsuki Suite",
+                    "Unity library suite with many ready-to-use systems",
+                    "https://github.com/LunariStudios/TsukiSuite",
+                    "https://github.com/LunariStudios/TsukiSuite/blob/master/Tsuki-Assets/1x/TsukiLogo_White_Original.png?raw=true",
+                    "TsukiSuite is an open source, free for commercial use group of libraries created for making Unity Development more pleasant.",
+                    "contain"
+                )
+                +project(
+                    "Elo App",
+                    "App based on Flutter",
+                    "",
+                    require("./images/eloapp.png"),
+                    "App developed as the mobile counterpart to EloHell's workshop"
+                )
 
-                    +project(
-                        "ShiroiFX",
-                        "Unity Game-feel library",
-                        "https://github.com/LunariStudios/ShiroiFX",
-                        "https://raw.githubusercontent.com/BrunoSilvaFreire/ShiroiFX/master/ShiroiFX-Assets/Logo.png",
-                        "A library with Game Feel and ease of use, your designers will love you forever",
-                        "contain"
-                    )
-                    +project(
-                        "Phoenix App",
-                        "App based on Flutter",
-                        "",
-                        require("./images/phoenixapp.png"),
-                        "App developed for Odeon's retail app: Phoenix"
-                    )
+                +project(
+                    "ShiroiFX",
+                    "Unity Game-feel library",
+                    "https://github.com/LunariStudios/ShiroiFX",
+                    "https://raw.githubusercontent.com/BrunoSilvaFreire/ShiroiFX/master/ShiroiFX-Assets/Logo.png",
+                    "A library with Game Feel and ease of use, your designers will love you forever",
+                    "contain"
+                )
+                +project(
+                    "Phoenix App",
+                    "App based on Flutter",
+                    "",
+                    require("./images/phoenixapp.png"),
+                    "App developed for Odeon's retail app: Phoenix"
+                )

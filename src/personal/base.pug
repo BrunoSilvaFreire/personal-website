@@ -1,0 +1,27 @@
+doctype html
+
+mixin header-item(label, destination)
+    a(href=destination)
+        button.mdc-button.header-item
+            .mdc-button__ripple
+            span.mdc-button__label=label
+
+html
+    head
+        title Bruno "DDevil" Silva Freire
+        link(rel="stylesheet" type="text/css" href=require("./scss/main.scss"))
+        link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        script(src="//code.iconify.design/1/1.0.0-rc1/iconify.min.js")
+
+    body
+        header
+            #header-content
+                h1.mdc-typography--headline5 Bruno Ribeiro Braga Silva Freire
+                #header-bar
+                    a(href="/")
+                        button.header-item.mdc-button.header_item#blog
+                        .mdc-button__ripple
+                        span.mdc-button__label Blog
+                    +header-item("Contact", "#socials")
+                    +header-item("Portfolio", "#portfolio")
+        block content
