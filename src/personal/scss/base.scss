@@ -1,0 +1,26 @@
+$mdc-typography-font-family: unquote("Roboto Mono, monospace");
+$mdc-layout-grid-columns: (
+        desktop: 4,
+        tablet: 2,
+        phone: 1
+) !default;
+
+//$mdc-theme-primary: #64FFDA;
+//$mdc-theme-background: #121212;
+//$mdc-theme-surface: #151515;
+//
+//$mdc-theme-on-surface: hsl(0, 0%, 80%);
+@import "~@material/button/mdc-button";
+@import "~@material/textfield/mdc-text-field";
+@import "~@material/card/mdc-card";
+@import "~@material/theme/mdc-theme";
+@import "~@material/elevation/mdc-elevation";
+@import "~@material/typography/mdc-typography";
+@import "~@material/layout-grid/mdc-layout-grid";
+.small-padding {
+  padding: 8px;
+}
+
+.medium-padding {
+  padding: 16px;
+}

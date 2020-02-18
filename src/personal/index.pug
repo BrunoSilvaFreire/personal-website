@@ -24,20 +24,38 @@ mixin project(title, subtitle, url, thumbnail, description, backgroundMode)
                             .mdc-button__ripple
                             span.mdc-button__label View
 
+
+mixin article-card--thumbnail(article)
+    .article-card.mdc-layout-grid__cell.mdc-layout-grid__cell--span-1.mdc-card.mdc-elevation--z5
+        .mdc-card__primary-action
+            .mdc-card__media.mdc-card__media--16-9(style=`background-image: url(\"${article.thumbnail}\")`)
+                .mdc-card__media-content.small-padding
+                    h1.mdc-typography--headline6.mdc-theme--on-surface=article.title
+                    span.mdc-typography--subtitle1 By #{article.author}
+
+mixin article-card--flat(article)
+    .article-card.mdc-layout-grid__cell.mdc-layout-grid__cell--span-1.mdc-card.mdc-elevation--z5
+        .mdc-card__primary-action.medium-padding
+            h1.mdc-typography--headline6=article.title
+            span.mdc-typography--subtitle1 By #{article.author}
+
 block content
     -
-        console.log("Hello")
-        articles = htmlWebpackPlugin.articles
-        console.log("Articles @ " + articles)
-    if (articles != null)
-        each article in articles
-            h1=article.author
-    else
-        h1.mdc-typography--headline6 no articles
+        articles = htmlWebpackPlugin.options.articles
     #splash
         #splash_bg
             #headline
                 h1.mdc-typography--overline  Realtime dynamic lighting on <i>The Unnecessary Engine</i>
+    #articles
+        h1.mdc-typography--headline3 Articles
+        .mdc-layout-grid
+            .mdc-layout-grid__inner
+                each a in articles
+                    each p in [0,1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1,]
+                        if a.thumbnail != null
+                            +article-card--thumbnail(a)
+                        else
+                            +article-card--flat(a)
     #website-content
         article#introduction
             #greeter.content-card
