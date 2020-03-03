@@ -6,11 +6,10 @@ import consumeArticles from "./blog/engine";
 import fs from 'fs';
 
 const articles = consumeArticles(path.resolve(__dirname, "blog/articles"));
-for (let a in articles) {
-    console.log(articles[a].toString());
-}
+
 const config: webpack.Configuration = {
     entry: './src/personal/index.ts',
+
     optimization: {
         splitChunks: {
             cacheGroups: {
@@ -28,17 +27,21 @@ const config: webpack.Configuration = {
             /*{
                 test: /\.pug$/,
                 use: [
+                    'debug-loader',
                     {
                         loader: 'file-loader',
                         options: {
                             name: "[contenthash].html"
                         }
                     },
+                    'debug-loader',
+                    'apply-loader',
+                    'debug-loader',
                     'pug-loader'
                 ]
             },*/
             {
-                test: /index\.pug/,
+                test: /index.pug/,
                 use: {
                     loader: 'pug-loader',
                     options: {}
@@ -53,14 +56,16 @@ const config: webpack.Configuration = {
             },
             {
                 test: /\.png$/,
-                loader: [{
-                    loader: 'file-loader',
-                    options: {
-                        esModule: false
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            esModule: false
+                        }
                     }
-                }
                 ]
             },
+
             {
                 test: /\.s[ac]ss$/,
                 use: [

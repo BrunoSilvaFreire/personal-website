@@ -24,3 +24,25 @@ $mdc-layout-grid-columns: (
 .medium-padding {
   padding: 16px;
 }
+
+.relative {
+  position: relative;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: inherit;
+}
+
+.fill {
+  flex-grow: 1;
+}
+
+.full-height {
+  height: 100%;
+}

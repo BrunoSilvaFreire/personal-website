@@ -1,5 +1,7 @@
 {
   "author": "Bruno \"DDevil\" Ribeiro Braga Silva Freire",
-  "thumbnail": "https://images.unsplash.com/photo-1524721696987-b9527df9e512&auto=format&fit=crop&w=720",
-  "title": "Unity Patterns: Traits"
+  "thumbnail": "https://images.unsplash.com/photo-1524721696987-b9527df9e512",
+  "title": "Unity Patterns: Traits",
+  "subtitle": "Also known as \"Ah, so this is why Unity is how it is\"",
+  "date": "02/18/2020"
 }

@@ -6,4 +6,37 @@
 }
 
 .article-card {
+  border-radius: 24px;
+  color: black;
+}
+
+.article-card--wip {
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.inherit-radius {
+  border-radius: inherit;
+}
+
+.article-card--disabled {
+  color: rgba(black, .38);
+}
+
+.article-card--thumbnail {
+  background-size: cover;
+  background-position: center;
+  border-radius: inherit;
+}
+
+.article-card__wip {
+  display: flex;
+  flex-flow: column;
+}
+
+.article-card__date {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  margin: 0;
 }
