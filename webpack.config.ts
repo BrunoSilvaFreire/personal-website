@@ -1,36 +1,15 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ExtractCssChunks from "extract-css-chunks-webpack-plugin";
 
-const config: webpack.Configuration = {
-    entry: './src/personal/index.ts',
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    chunks: 'all',
-                    minChunks: 3,
-                    minSize: 0,
-                    name: 'common'
-                }
-            }
-        },
-    },
+export default {
+    entry: './app/src/index.ts',
     module: {
         rules: [
             {
                 test: /\.pug$/,
                 use: [
-                    /*{
-                        loader: 'file-loader',
-                        options: {
-                            name: "index.[contenthash].html"
-                        }
-                    },
-                    'debug-loader',
-                    'val-loader',
-                    'apply-loader',*/
                     'pug-loader'
                 ]
             },
@@ -42,52 +21,43 @@ const config: webpack.Configuration = {
                 ]
             },
             {
-                test: /\.png$/,
-                loader: [{
-                    loader: 'file-loader',
-                    options: {
-                        esModule: false
-                    }
-                }
-                ]
+                test: /\.(png|jpg|gif)$/i,
+                generator: {
+                    filename: 'static/[name][ext]'
+                },
+                type: 'asset'
             },
             {
-                test: /\.s[ac]ss$/,
+                test: /\.scss$/,
                 use: [
+                    ExtractCssChunks.loader,
                     {
-                        loader: 'file-loader',
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: "resolve-url-loader"
+                    },
+
+                    {
+                        loader: "sass-loader",
                         options: {
-                            name: '[hash].css',
-                            esModule: false
+                            sourceMap: true
                         }
                     },
-                    'extract-loader',
-                    'css-loader',
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sassOptions: {
-                                includePaths: [
-                                    './node_modules'
-                                ]
-                            }
-                        }
-                    }
                 ]
-            }
+            },
         ]
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'foo.bundle.js'
+        filename: 'website.js'
     },
-    plugins: [
+    plugins: [new ExtractCssChunks(),
+
         new HtmlWebpackPlugin({
-            inject: true,
-            template: "./src/personal/index.pug",
-        })
+                inject: true,
+                template: "./app/index.pug",
+            },
+        )
     ]
-
 };
-
-export default config;

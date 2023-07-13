@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700&display=swap');
-
 $mdc-typography-font-family: unquote("Roboto Mono, monospace");
 $mdc-theme-primary: #64FFDA;
 $mdc-theme-background: #121212;
 $mdc-theme-surface: #151515;
 
 $mdc-theme-on-surface: hsl(0, 0%, 80%);
-@import "~@material/button/mdc-button";
-@import "~@material/textfield/mdc-text-field";
-@import "~@material/card/mdc-card";
-@import "~@material/theme/mdc-theme";
-@import "~@material/elevation/mdc-elevation";
-@import "~@material/typography/mdc-typography";
+@import "@material/button/mdc-button";
+@import "@material/textfield/mdc-text-field";
+@import "@material/card/mdc-card";
+@import "@material/theme/mdc-theme";
+@import "@material/elevation/mdc-elevation";
+@import "@material/typography/mdc-typography";
 
 body {
   padding: 0;
@@ -48,6 +46,8 @@ header {
 }
 
 $splash_bg_size: 500px;
+
+
 #splash {
   position: relative;
   padding: 0;
@@ -70,7 +70,7 @@ $splash_bg_size: 500px;
 #splash_bg {
   height: $splash_bg_size;
   background-size: cover;
-  background: url("../images/realtime_lighting.png") center;
+  background: url('../images/realtime_lighting.png') center;
   z-index: -1;
 }
 
